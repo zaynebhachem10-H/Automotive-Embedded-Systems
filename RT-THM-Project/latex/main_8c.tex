@@ -1,0 +1,121 @@
+\doxysection{src/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include "{}../include/project.\+h"{}}\newline
+{\ttfamily \#include "{}../include/config.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structProcessStat}{Process\+Stat}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main_8c_a1b4ed9f38c3651acd791add913ab009f}{init\+\_\+ipc}} (int workers)
+\begin{DoxyCompactList}\small\item\em Initialise les ressources IPC (Mémoire partagée et Sémaphores). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a46fd66c7fed50332a474537b6c986f4b}{worker\+\_\+process}} (int id)
+\item 
+void \mbox{\hyperlink{main_8c_a91d39df84b883040c7f76233aa81998d}{load\+\_\+config}} (void)
+\item 
+void \mbox{\hyperlink{main_8c_a8bfc90b3fb9344e9caafec953baacc0b}{handle\+\_\+sigint}} (int sig)
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structProcessStat}{Process\+Stat}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main_8c_a15f03333a7c534eed2e16f8c87ff30fb}{shared\+\_\+stats}}
+\item 
+int \mbox{\hyperlink{main_8c_abfb76acd68f1bf560d1e29736e87fb4c}{WORKERS}} = 3
+\item 
+int \mbox{\hyperlink{main_8c_a101a44f6ae94b1cd1b073c99a911dff0}{REFRESH\+\_\+\+RATE}} = 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a8bfc90b3fb9344e9caafec953baacc0b}\label{main_8c_a8bfc90b3fb9344e9caafec953baacc0b} 
+\index{main.c@{main.c}!handle\_sigint@{handle\_sigint}}
+\index{handle\_sigint@{handle\_sigint}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{handle\_sigint()}{handle\_sigint()}}
+{\footnotesize\ttfamily void handle\+\_\+sigint (\begin{DoxyParamCaption}\item[{int}]{sig }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_a1b4ed9f38c3651acd791add913ab009f}\label{main_8c_a1b4ed9f38c3651acd791add913ab009f} 
+\index{main.c@{main.c}!init\_ipc@{init\_ipc}}
+\index{init\_ipc@{init\_ipc}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{init\_ipc()}{init\_ipc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structProcessStat}{Process\+Stat}} \texorpdfstring{$\ast$}{*} init\+\_\+ipc (\begin{DoxyParamCaption}\item[{int}]{workers }\end{DoxyParamCaption})}
+
+
+
+Initialise les ressources IPC (Mémoire partagée et Sémaphores). 
+
+Cette fonction alloue la mémoire une seule fois au démarrage (Règle MISRA 21.\+3). 
+\begin{DoxyParams}{Parameters}
+{\em workers} & Nombre de processus fils à gérer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la mémoire partagée. 
+\end{DoxyReturn}
+
+\begin{DoxyEnumerate}
+\item Création de la mémoire partagée avec la clé SHM\+\_\+\+KEY
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item Attachement de la mémoire
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item Création d\textquotesingle{}un sémaphore binaire (Mutex)
+\end{DoxyEnumerate}
+
+Initialisation du sémaphore à 1 (Libre)\Hypertarget{main_8c_a91d39df84b883040c7f76233aa81998d}\label{main_8c_a91d39df84b883040c7f76233aa81998d} 
+\index{main.c@{main.c}!load\_config@{load\_config}}
+\index{load\_config@{load\_config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{load\_config()}{load\_config()}}
+{\footnotesize\ttfamily void load\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Logique de direction \+: si santé \texorpdfstring{$<$}{<} 20\%, on demande une pause (SIGUSR1)\Hypertarget{main_8c_a46fd66c7fed50332a474537b6c986f4b}\label{main_8c_a46fd66c7fed50332a474537b6c986f4b} 
+\index{main.c@{main.c}!worker\_process@{worker\_process}}
+\index{worker\_process@{worker\_process}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{worker\_process()}{worker\_process()}}
+{\footnotesize\ttfamily void worker\+\_\+process (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8c_a101a44f6ae94b1cd1b073c99a911dff0}\label{main_8c_a101a44f6ae94b1cd1b073c99a911dff0} 
+\index{main.c@{main.c}!REFRESH\_RATE@{REFRESH\_RATE}}
+\index{REFRESH\_RATE@{REFRESH\_RATE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{REFRESH\_RATE}{REFRESH\_RATE}}
+{\footnotesize\ttfamily int REFRESH\+\_\+\+RATE = 2}
+
+\Hypertarget{main_8c_a15f03333a7c534eed2e16f8c87ff30fb}\label{main_8c_a15f03333a7c534eed2e16f8c87ff30fb} 
+\index{main.c@{main.c}!shared\_stats@{shared\_stats}}
+\index{shared\_stats@{shared\_stats}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{shared\_stats}{shared\_stats}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structProcessStat}{Process\+Stat}}\texorpdfstring{$\ast$}{*} shared\+\_\+stats}
+
+\Hypertarget{main_8c_abfb76acd68f1bf560d1e29736e87fb4c}\label{main_8c_abfb76acd68f1bf560d1e29736e87fb4c} 
+\index{main.c@{main.c}!WORKERS@{WORKERS}}
+\index{WORKERS@{WORKERS}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{WORKERS}{WORKERS}}
+{\footnotesize\ttfamily int WORKERS = 3}
+

@@ -1,0 +1,31 @@
+\doxysection{src/logger.c File Reference}
+\hypertarget{logger_8c}{}\label{logger_8c}\index{src/logger.c@{src/logger.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for logger.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{logger_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{logger_8c_a5a77b9d439b3549e9cfb7b16ade1347e}{log\+\_\+event}} (const char \texorpdfstring{$\ast$}{*}message)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{logger_8c_a5a77b9d439b3549e9cfb7b16ade1347e}\label{logger_8c_a5a77b9d439b3549e9cfb7b16ade1347e} 
+\index{logger.c@{logger.c}!log\_event@{log\_event}}
+\index{log\_event@{log\_event}!logger.c@{logger.c}}
+\doxysubsubsection{\texorpdfstring{log\_event()}{log\_event()}}
+{\footnotesize\ttfamily void log\+\_\+event (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message }\end{DoxyParamCaption})}
+
+Précision microseconde
+
+Format\+: \mbox{[}Date Heure.\+micro\mbox{]} \mbox{[}PID\mbox{]} Message

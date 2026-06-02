@@ -1,0 +1,74 @@
+\doxysection{src/worker.c File Reference}
+\hypertarget{worker_8c}{}\label{worker_8c}\index{src/worker.c@{src/worker.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}../include/project.\+h"{}}\newline
+Include dependency graph for worker.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{worker_8c_afd04b0774bac97d11a06c428286bc061}{lock\+\_\+ipc}} (void)
+\item 
+void \mbox{\hyperlink{worker_8c_aa37330a596c6d94cc66b66d09650a8fb}{unlock\+\_\+ipc}} (void)
+\item 
+void \mbox{\hyperlink{worker_8c_a86917e0a580bf268338e6cfd43cf8ca5}{handle\+\_\+worker\+\_\+signals}} (int sig)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structProcessStat}{Process\+Stat}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{worker_8c_a15f03333a7c534eed2e16f8c87ff30fb}{shared\+\_\+stats}}
+\item 
+int \mbox{\hyperlink{worker_8c_ab7957357c63dd7d28e4f974babff7bbb}{is\+\_\+paused}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{worker_8c_a86917e0a580bf268338e6cfd43cf8ca5}\label{worker_8c_a86917e0a580bf268338e6cfd43cf8ca5} 
+\index{worker.c@{worker.c}!handle\_worker\_signals@{handle\_worker\_signals}}
+\index{handle\_worker\_signals@{handle\_worker\_signals}!worker.c@{worker.c}}
+\doxysubsubsection{\texorpdfstring{handle\_worker\_signals()}{handle\_worker\_signals()}}
+{\footnotesize\ttfamily void handle\+\_\+worker\+\_\+signals (\begin{DoxyParamCaption}\item[{int}]{sig }\end{DoxyParamCaption})}
+
+Mode économie / Pause
+
+Reprise du travail
+
+Configuration des signaux
+
+Lecture de la commande via mémoire partagée\Hypertarget{worker_8c_afd04b0774bac97d11a06c428286bc061}\label{worker_8c_afd04b0774bac97d11a06c428286bc061} 
+\index{worker.c@{worker.c}!lock\_ipc@{lock\_ipc}}
+\index{lock\_ipc@{lock\_ipc}!worker.c@{worker.c}}
+\doxysubsubsection{\texorpdfstring{lock\_ipc()}{lock\_ipc()}}
+{\footnotesize\ttfamily void lock\+\_\+ipc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Fonctions de synchronisation (P et V) Opération P (Wait)\Hypertarget{worker_8c_aa37330a596c6d94cc66b66d09650a8fb}\label{worker_8c_aa37330a596c6d94cc66b66d09650a8fb} 
+\index{worker.c@{worker.c}!unlock\_ipc@{unlock\_ipc}}
+\index{unlock\_ipc@{unlock\_ipc}!worker.c@{worker.c}}
+\doxysubsubsection{\texorpdfstring{unlock\_ipc()}{unlock\_ipc()}}
+{\footnotesize\ttfamily void unlock\+\_\+ipc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Opération V (Signal)
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{worker_8c_ab7957357c63dd7d28e4f974babff7bbb}\label{worker_8c_ab7957357c63dd7d28e4f974babff7bbb} 
+\index{worker.c@{worker.c}!is\_paused@{is\_paused}}
+\index{is\_paused@{is\_paused}!worker.c@{worker.c}}
+\doxysubsubsection{\texorpdfstring{is\_paused}{is\_paused}}
+{\footnotesize\ttfamily int is\+\_\+paused = 0}
+
+État local du worker \Hypertarget{worker_8c_a15f03333a7c534eed2e16f8c87ff30fb}\label{worker_8c_a15f03333a7c534eed2e16f8c87ff30fb} 
+\index{worker.c@{worker.c}!shared\_stats@{shared\_stats}}
+\index{shared\_stats@{shared\_stats}!worker.c@{worker.c}}
+\doxysubsubsection{\texorpdfstring{shared\_stats}{shared\_stats}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structProcessStat}{Process\+Stat}}\texorpdfstring{$\ast$}{*} shared\+\_\+stats\hspace{0.3cm}{\ttfamily [extern]}}
+
