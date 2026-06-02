@@ -1,0 +1,16 @@
+# Build files
+*.o
+*.out
+
+# Logs
+*.log
+
+# Generated documentation
+html/
+latex/
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
