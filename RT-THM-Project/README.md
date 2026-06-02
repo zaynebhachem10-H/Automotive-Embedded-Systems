@@ -46,7 +46,7 @@ make
 
 ## Dashboard
 
-![Dashboard](screenshots/Capture d'écran 2026-04-25 093335.png)
+![Dashboard](screenshots/capture_dashboard.png)
 
 
 ## Author
